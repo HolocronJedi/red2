@@ -1,8 +1,8 @@
-# terminal-copilot
+# red2
 
 ## Quick Start
 
-1. Start terminal-copilot:
+1. Start red2:
 ```bash
 python3 -m terminal_copilot --no-ai
 ```
@@ -20,7 +20,7 @@ That is enough to start using it immediately.
 
 ## Overview
 
-`terminal-copilot` runs your shell inside a PTY wrapper and adds live context-aware insights.
+`red2` runs your shell inside a PTY wrapper and adds live context-aware insights.
 It can:
 
 - Monitor typed commands and shell output.
@@ -45,7 +45,7 @@ python3 -m terminal_copilot
 # Start wrapper with custom shell and slower insight checks
 python3 -m terminal_copilot --shell /bin/zsh --debounce 1.0
 
-# Opt-in session recording (default output under ~/.terminal-copilot/sessions)
+# Opt-in session recording (default output under ~/.red2/sessions)
 python3 -m terminal_copilot --record-session
 
 # Opt-in session recording to a custom path
@@ -98,7 +98,7 @@ python3 -m terminal_copilot [--no-ai] [--shell SHELL] [--debounce SECONDS] [--re
 
 ### In-shell commands
 
-- `help`: Print terminal-copilot help menu.
+- `help`: Print red2 help menu.
 - `tc runfile`: Prompt for local command file path and load commands.
 - `tc runfile <path>`: Load commands from provided local path.
 - `tc runlist`: Alias for `tc runfile`.
@@ -113,7 +113,7 @@ python3 -m terminal_copilot [--no-ai] [--shell SHELL] [--debounce SECONDS] [--re
 ### Help output (example)
 
 ```text
-[tc] terminal-copilot help
+[tc] red2 help
 
 Built-in modules:
   - combined_insights: Rule-based + optional AI insights
@@ -137,7 +137,7 @@ Batch command execution:
 
 Session controls inside wrapped shell:
   - tc session start [path]
-    Start transcript logging without restarting terminal-copilot.
+    Start transcript logging without restarting red2.
   - tc session stop
     Stop transcript logging for this shell.
   - tc session path
@@ -146,7 +146,7 @@ Session controls inside wrapped shell:
 Session recording (opt-in):
   - Start wrapper with --record-session to persist this session as NDJSON.
   - Optional --session-log /path/to/file.ndjson to choose output path.
-  - Default path: ~/.terminal-copilot/sessions/
+  - Default path: ~/.red2/sessions/
 ```
 
 ## Configuration
@@ -170,13 +170,13 @@ Session recording (opt-in):
   - `mcp` is not part of this project CLI.
   - Start with `python3 -m terminal_copilot` and use commands inside that wrapped shell.
 - `Object "runfile" is unknown, try "tc help"`:
-  - You are hitting the system `tc` command instead of terminal-copilot interception.
+  - You are hitting the system `tc` command instead of red2 interception.
   - Ensure you are inside the `[tc]` wrapped shell and type `tc runfile` there.
 - `tc runfile` cannot read file:
   - Verify the local file exists and path is correct (`ls -l /path/to/file`).
   - Use absolute paths when possible.
 - Output formatting looks off:
-  - Restart terminal-copilot.
+  - Restart red2.
   - Avoid pasting large multiline input directly into confirmation prompts.
 - No AI insights appear:
   - Expected with `--no-ai`.
